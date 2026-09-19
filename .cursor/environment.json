@@ -1,0 +1,12 @@
+{
+  "name": "OpenIssue.dev",
+  "install": "bash .cursor/install.sh",
+  "start": "bash .cursor/setup-env.sh",
+  "terminals": [
+    {
+      "name": "next-dev",
+      "command": "npm run dev"
+    }
+  ],
+  "ports": [3000]
+}
