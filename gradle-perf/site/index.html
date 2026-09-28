@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gradle perf — ServiceTalk</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="masthead">
+    <p class="eyebrow">mvn-perf → gradle-perf</p>
+    <h1>Tốc độ build ServiceTalk</h1>
+    <p class="lede">Đo có kiểm soát trên <a href="https://github.com/apple/servicetalk/commit/eb730f1a88d2d4b0aa6d891e3870c6425d88933a">eb730f1a88d2</a>. Wall clock là thời gian mình chờ. Số Gradle in ra là phần sau khi process build đã chạy.</p>
+  </header>
+  <main>
+    <section>
+      <h2>Kết quả chính</h2>
+      <ul class="insights">
+        <li>Daemon nóng chạy help trong 2.2s so với 8.7s khi mỗi lần là một JVM mới (3.9×). Đây là phần mvnd loại bỏ ở Maven.</li>
+        <li>Parallel, build cache và configure-on-demand không đổi help: 2.0s so với 2.2s của daemon tuần tự. Các cờ này bắt đầu có ích khi có task compile chạy được song song.</li>
+        <li>Cùng một cache hit, kiểu CI (--no-daemon) mất 6.1s còn daemon đang sống mất 1.3s (4.8×). Runner một lần không giữ được daemon sang job sau, nhưng không nên trả giá này hai lần trong cùng một job.</li>
+        <li>Assemble đầu mất 15.3s với 31 task executed, gồm daemon vừa khởi động và các project phụ thuộc chưa có output. Assemble lại khi source không đổi mất 1.3s, 35 task up-to-date.</li>
+        <li>Sau khi dependency đã được biên dịch, clean ba module rồi assemble ghi cache trong 6.7s (18 executed). Lần clean tiếp theo đọc cache trong 1.3s (5.3×), với 6 task from cache. clean không xóa GRADLE_USER_HOME.</li>
+        <li>Configuration cache, với configure-on-demand tắt như kịch bản daemon, tái sử dụng help trong 0.6s so với 2.2s (3.9×).</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Cấu hình, task help</h2>
+      <div class="chart"><div class="bar-row">
+        <div class="bar-label">help, JVM mới</div>
+        <div class="bar-track"><div class="bar-ok" style="width:100.0%"></div></div>
+        <div class="bar-value">8.7s</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">help, daemon nóng</div>
+        <div class="bar-track"><div class="bar-ok" style="width:25.5%"></div></div>
+        <div class="bar-value">2.2s</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">help, cờ mặc định của ServiceTalk</div>
+        <div class="bar-track"><div class="bar-ok" style="width:23.4%"></div></div>
+        <div class="bar-value">2.0s</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">help, configuration cache</div>
+        <div class="bar-track"><div class="bar-ok" style="width:6.6%"></div></div>
+        <div class="bar-value">0.6s</div>
+      </div></div>
+      <table>
+    <thead>
+      <tr>
+        <th>Kịch bản</th>
+        <th>Tương đương Maven</th>
+        <th>Median wall</th>
+        <th>Median Gradle</th>
+        <th>Các lần đo</th>
+        <th>Task</th>
+      </tr>
+    </thead>
+    <tbody><tr>
+        <td>help, JVM mới</td>
+        <td>mvn help, không có mvnd</td>
+        <td>8.7s</td>
+        <td>8.0s</td>
+        <td>8.8s, 8.7s</td>
+        <td>1 executed, 4 up-to-date</td>
+      </tr>
+<tr>
+        <td>help, daemon nóng</td>
+        <td>mvnd help, một luồng</td>
+        <td>2.2s</td>
+        <td>2.0s</td>
+        <td>2.3s, 2.2s, 1.7s</td>
+        <td>1 executed, 4 up-to-date</td>
+      </tr>
+<tr>
+        <td>help, cờ mặc định của ServiceTalk</td>
+        <td>mvnd -T 1C với build cache bật</td>
+        <td>2.0s</td>
+        <td>1.0s</td>
+        <td>2.4s, 2.0s, 1.9s</td>
+        <td>1 executed, 4 up-to-date</td>
+      </tr>
+<tr>
+        <td>help, configuration cache</td>
+        <td>không có tương đương ổn định bên Maven</td>
+        <td>0.6s</td>
+        <td>0.5s</td>
+        <td>0.6s, 0.6s</td>
+        <td>1 executed</td>
+      </tr></tbody>
+  </table>
+    </section>
+    <section>
+      <h2>Compile lát ba module</h2>
+      <p class="note">Lát đo là clean hoặc assemble của <code>servicetalk-buffer-api</code>, <code>servicetalk-concurrent-api</code> và <code>servicetalk-http-api</code>. <code>http-api</code> kéo theo các project phụ thuộc, nên số task lớn hơn ba module. Không chạy <code>test</code>: worker test của ServiceTalk xin 4GB, và suite đầy đủ trên CI đã mất khoảng 19–34 phút.</p>
+      <div class="chart"><div class="bar-row">
+        <div class="bar-label">clean + assemble, không cache</div>
+        <div class="bar-track"><div class="bar-ok" style="width:100.0%"></div></div>
+        <div class="bar-value">15.3s</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">assemble lại, không đổi source</div>
+        <div class="bar-track"><div class="bar-ok" style="width:8.2%"></div></div>
+        <div class="bar-value">1.3s</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">clean + assemble, ghi build cache</div>
+        <div class="bar-track"><div class="bar-ok" style="width:43.8%"></div></div>
+        <div class="bar-value">6.7s</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">clean + assemble, đọc build cache</div>
+        <div class="bar-track"><div class="bar-ok" style="width:8.2%"></div></div>
+        <div class="bar-value">1.3s</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">CI ServiceTalk: không daemon, có cache</div>
+        <div class="bar-track"><div class="bar-ok" style="width:40.0%"></div></div>
+        <div class="bar-value">6.1s</div>
+      </div></div>
+      <table>
+    <thead>
+      <tr>
+        <th>Kịch bản</th>
+        <th>Tương đương Maven</th>
+        <th>Median wall</th>
+        <th>Median Gradle</th>
+        <th>Các lần đo</th>
+        <th>Task</th>
+      </tr>
+    </thead>
+    <tbody><tr>
+        <td>clean + assemble, không cache</td>
+        <td>mvn clean package -T 1C, không build cache</td>
+        <td>15.3s</td>
+        <td>14.0s</td>
+        <td>15.3s</td>
+        <td>31 executed, 7 up-to-date</td>
+      </tr>
+<tr>
+        <td>assemble lại, không đổi source</td>
+        <td>mvn package lần hai, compiler incremental</td>
+        <td>1.3s</td>
+        <td>1.0s</td>
+        <td>1.3s, 1.2s</td>
+        <td>35 up-to-date</td>
+      </tr>
+<tr>
+        <td>clean + assemble, ghi build cache</td>
+        <td>lần đầu chạy với maven-build-cache-extension</td>
+        <td>6.7s</td>
+        <td>6.0s</td>
+        <td>6.7s</td>
+        <td>18 executed, 20 up-to-date</td>
+      </tr>
+<tr>
+        <td>clean + assemble, đọc build cache</td>
+        <td>clean package khi cache đã có entry</td>
+        <td>1.3s</td>
+        <td>1.0s</td>
+        <td>1.3s, 1.2s</td>
+        <td>12 executed, 6 from cache, 20 up-to-date</td>
+      </tr>
+<tr>
+        <td>CI ServiceTalk: không daemon, có cache</td>
+        <td>mvn sạch trên runner mới, cache ~/.m2 đã restore</td>
+        <td>6.1s</td>
+        <td>5.0s</td>
+        <td>6.1s</td>
+        <td>12 executed, 6 from cache, 20 up-to-date</td>
+      </tr></tbody>
+  </table>
+    </section>
+    <section>
+      <h2>Bối cảnh CI công khai</h2>
+      <p class="note">Các mốc này là wall clock của GitHub Actions ngày 28/09/2026, không cùng giao thức với bảng trên. Chúng cho biết vì sao lát đo tập trung vào daemon và cache.</p>
+      <div class="ci-grid">
+        <article>
+          <h3><a href="https://github.com/apple/servicetalk/actions/runs/36387399100">PR Builder, JDK 17</a></h3>
+          <p class="ci-duration">19 phút 00 giây</p>
+          <p>Job test dài nhất của PR #3650. Wall clock cả workflow khoảng 19 phút.</p>
+        </article>
+        <article>
+          <h3><a href="https://github.com/apple/servicetalk/actions/runs/36387399100">PR Builder, macOS JDK 11</a></h3>
+          <p class="ci-duration">6 phút 43 giây</p>
+          <p>Self-hosted macOS trên cùng PR. Vẫn clean và --no-daemon.</p>
+        </article>
+        <article>
+          <h3><a href="https://github.com/apple/servicetalk/actions/runs/36389576467">Snapshot check</a></h3>
+          <p class="ci-duration">33 phút 36 giây</p>
+          <p>Push #3650 lên main. ./gradlew --no-daemon --parallel check sau một lần clean riêng.</p>
+        </article>
+        <article>
+          <h3><a href="https://github.com/apple/servicetalk/actions/runs/36389576467">Snapshot publish</a></h3>
+          <p class="ci-duration">22 phút 31 giây</p>
+          <p>publish --no-daemon --no-parallel. Giữ serial vì Central chịu upload song song kém.</p>
+        </article>
+      </div>
+    </section>
+    <section>
+      <h2>Ánh xạ và cờ đã đo</h2>
+      <table>
+    <thead><tr><th>mvn-perf</th><th>gradle-perf</th><th>Kịch bản</th></tr></thead>
+    <tbody>
+      <tr><td>mvn, JVM mới mỗi lần</td><td>Gradle --no-daemon</td><td>config-no-daemon và compile-ci-shape</td></tr>
+      <tr><td>mvnd</td><td>Gradle Daemon</td><td>config-daemon</td></tr>
+      <tr><td>mvn -T 1C</td><td>--parallel</td><td>mọi kịch bản compile</td></tr>
+      <tr><td>maven-build-cache-extension</td><td>Build cache local</td><td>compile-cache-store rồi compile-cache-hit</td></tr>
+      <tr><td>Không có tương đương ổn định</td><td>Configuration cache</td><td>config-configuration-cache</td></tr>
+      <tr><td>mvn package lần hai</td><td>Incremental, không clean</td><td>compile-incremental</td></tr>
+      <tr><td>.mvn/jvm.config</td><td>org.gradle.jvmargs</td><td>Heap đo cố định 2GB trong GRADLE_USER_HOME</td></tr>
+    </tbody>
+  </table>
+    </section>
+    <section>
+      <h2>Môi trường</h2>
+      <dl>
+    <dt>Đo lúc</dt><dd>2026-09-28T13:13:29.628Z</dd>
+    <dt>Commit</dt><dd>eb730f1a88d2d4b0aa6d891e3870c6425d88933a</dd>
+    <dt>Message</dt><dd>Use assertThrows instead of try/fail/catch in tests (#3650)</dd>
+    <dt>Gradle</dt><dd>9.7.1</dd>
+    <dt>Java</dt><dd>openjdk version &quot;21.0.10&quot; 2026-01-20</dd>
+    <dt>Máy</dt><dd>Linux 6.12.94+, 4 CPU, 16014MB RAM</dd>
+    <dt>Heap daemon</dt><dd>-Xms256m -Xmx2g -XX:MaxMetaspaceSize=384m -XX:+UseG1GC -Dfile.encoding=UTF-8</dd>
+  </dl>
+  <p class="note">gradle.properties của ServiceTalk xin -Xms2g -Xmx4g. Máy đo chỉ còn khoảng 5GB trống, nên GRADLE_USER_HOME ghi đè heap daemon xuống 2GB. User-home properties đứng trước project properties.</p>
+    </section>
+  </main>
+</body>
+</html>

@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# gradle-perf local logs; the published summary stays in results/runs.json
+gradle-perf/results/logs/
