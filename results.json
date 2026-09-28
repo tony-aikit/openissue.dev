@@ -1,0 +1,1572 @@
+{
+  "measuredAt": "2026-09-28T13:08:31.102Z",
+  "environment": {
+    "measuredAt": "2026-09-28T13:13:29.628Z",
+    "servicetalkDir": "/tmp/servicetalk",
+    "servicetalkCommit": "eb730f1a88d2d4b0aa6d891e3870c6425d88933a",
+    "servicetalkSubject": "Use assertThrows instead of try/fail/catch in tests (#3650)",
+    "gradleVersion": "9.7.1",
+    "javaVersion": "openjdk version \"21.0.10\" 2026-01-20",
+    "os": "Linux 6.12.94+",
+    "cpus": 4,
+    "memTotalMb": 16014,
+    "gradleUserHome": "/tmp/gradle-perf-home",
+    "gradleJvmArgs": "-Xms256m -Xmx2g -XX:MaxMetaspaceSize=384m -XX:+UseG1GC -Dfile.encoding=UTF-8",
+    "heapNote": "gradle.properties của ServiceTalk xin -Xms2g -Xmx4g. Máy đo chỉ còn khoảng 5GB trống, nên GRADLE_USER_HOME ghi đè heap daemon xuống 2GB. User-home properties đứng trước project properties."
+  },
+  "runs": [
+    {
+      "scenarioId": "config-no-daemon",
+      "group": "configuration",
+      "title": "help, JVM mới",
+      "mvnAnalogue": "mvn help, không có mvnd",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--no-daemon",
+        "--no-parallel",
+        "--no-build-cache",
+        "--no-configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 1,
+      "exitCode": 0,
+      "wallClockMs": 8802,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 8000,
+      "taskSummary": "1 executed, 4 up-to-date",
+      "executedTasks": 1,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 4,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "config-no-daemon",
+      "group": "configuration",
+      "title": "help, JVM mới",
+      "mvnAnalogue": "mvn help, không có mvnd",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--no-daemon",
+        "--no-parallel",
+        "--no-build-cache",
+        "--no-configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 2,
+      "exitCode": 0,
+      "wallClockMs": 8684,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 8000,
+      "taskSummary": "1 executed, 4 up-to-date",
+      "executedTasks": 1,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 4,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "config-daemon",
+      "group": "configuration",
+      "title": "help, daemon nóng",
+      "mvnAnalogue": "mvnd help, một luồng",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--no-parallel",
+        "--no-build-cache",
+        "--no-configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "warmup",
+      "iteration": 1,
+      "exitCode": 0,
+      "wallClockMs": 8636,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 8000,
+      "taskSummary": "1 executed, 4 up-to-date",
+      "executedTasks": 1,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 4,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "config-daemon",
+      "group": "configuration",
+      "title": "help, daemon nóng",
+      "mvnAnalogue": "mvnd help, một luồng",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--no-parallel",
+        "--no-build-cache",
+        "--no-configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 1,
+      "exitCode": 0,
+      "wallClockMs": 2333,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 2000,
+      "taskSummary": "1 executed, 4 up-to-date",
+      "executedTasks": 1,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 4,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "config-daemon",
+      "group": "configuration",
+      "title": "help, daemon nóng",
+      "mvnAnalogue": "mvnd help, một luồng",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--no-parallel",
+        "--no-build-cache",
+        "--no-configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 2,
+      "exitCode": 0,
+      "wallClockMs": 2228,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 2000,
+      "taskSummary": "1 executed, 4 up-to-date",
+      "executedTasks": 1,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 4,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "config-daemon",
+      "group": "configuration",
+      "title": "help, daemon nóng",
+      "mvnAnalogue": "mvnd help, một luồng",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--no-parallel",
+        "--no-build-cache",
+        "--no-configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 3,
+      "exitCode": 0,
+      "wallClockMs": 1724,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 1000,
+      "taskSummary": "1 executed, 4 up-to-date",
+      "executedTasks": 1,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 4,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "config-servicetalk-defaults",
+      "group": "configuration",
+      "title": "help, cờ mặc định của ServiceTalk",
+      "mvnAnalogue": "mvnd -T 1C với build cache bật",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "warmup",
+      "iteration": 1,
+      "exitCode": 0,
+      "wallClockMs": 8837,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 8000,
+      "taskSummary": "1 executed, 4 up-to-date",
+      "executedTasks": 1,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 4,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "config-servicetalk-defaults",
+      "group": "configuration",
+      "title": "help, cờ mặc định của ServiceTalk",
+      "mvnAnalogue": "mvnd -T 1C với build cache bật",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 1,
+      "exitCode": 0,
+      "wallClockMs": 2426,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 2000,
+      "taskSummary": "1 executed, 4 up-to-date",
+      "executedTasks": 1,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 4,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "config-servicetalk-defaults",
+      "group": "configuration",
+      "title": "help, cờ mặc định của ServiceTalk",
+      "mvnAnalogue": "mvnd -T 1C với build cache bật",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 2,
+      "exitCode": 0,
+      "wallClockMs": 2043,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 1000,
+      "taskSummary": "1 executed, 4 up-to-date",
+      "executedTasks": 1,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 4,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "config-servicetalk-defaults",
+      "group": "configuration",
+      "title": "help, cờ mặc định của ServiceTalk",
+      "mvnAnalogue": "mvnd -T 1C với build cache bật",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 3,
+      "exitCode": 0,
+      "wallClockMs": 1863,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 1000,
+      "taskSummary": "1 executed, 4 up-to-date",
+      "executedTasks": 1,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 4,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "config-configuration-cache",
+      "group": "configuration",
+      "title": "help, configuration cache",
+      "mvnAnalogue": "không có tương đương ổn định bên Maven",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--build-cache",
+        "--no-configure-on-demand",
+        "--configuration-cache"
+      ],
+      "role": "warmup",
+      "iteration": 1,
+      "exitCode": 0,
+      "wallClockMs": 3164,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 2000,
+      "taskSummary": "1 executed",
+      "executedTasks": 1,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 0,
+      "configurationCache": "reused",
+      "problemExcerpt": "Reusing configuration cache.\nConfiguration cache entry reused.",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "config-configuration-cache",
+      "group": "configuration",
+      "title": "help, configuration cache",
+      "mvnAnalogue": "không có tương đương ổn định bên Maven",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--build-cache",
+        "--no-configure-on-demand",
+        "--configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 1,
+      "exitCode": 0,
+      "wallClockMs": 563,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 506,
+      "taskSummary": "1 executed",
+      "executedTasks": 1,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 0,
+      "configurationCache": "reused",
+      "problemExcerpt": "Reusing configuration cache.\nConfiguration cache entry reused.",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "config-configuration-cache",
+      "group": "configuration",
+      "title": "help, configuration cache",
+      "mvnAnalogue": "không có tương đương ổn định bên Maven",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--build-cache",
+        "--no-configure-on-demand",
+        "--configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 2,
+      "exitCode": 0,
+      "wallClockMs": 587,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 527,
+      "taskSummary": "1 executed",
+      "executedTasks": 1,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 0,
+      "configurationCache": "reused",
+      "problemExcerpt": "Reusing configuration cache.\nConfiguration cache entry reused.",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "compile-no-cache",
+      "group": "compile",
+      "title": "clean + assemble, không cache",
+      "mvnAnalogue": "mvn clean package -T 1C, không build cache",
+      "tasks": [
+        ":servicetalk-buffer-api:clean",
+        ":servicetalk-concurrent-api:clean",
+        ":servicetalk-http-api:clean",
+        ":servicetalk-buffer-api:assemble",
+        ":servicetalk-concurrent-api:assemble",
+        ":servicetalk-http-api:assemble"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--no-build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 1,
+      "exitCode": 0,
+      "wallClockMs": 15325,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 14000,
+      "taskSummary": "31 executed, 7 up-to-date",
+      "executedTasks": 31,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 7,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "compile-incremental",
+      "group": "compile",
+      "title": "assemble lại, không đổi source",
+      "mvnAnalogue": "mvn package lần hai, compiler incremental",
+      "tasks": [
+        ":servicetalk-buffer-api:assemble",
+        ":servicetalk-concurrent-api:assemble",
+        ":servicetalk-http-api:assemble"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--no-build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 1,
+      "exitCode": 0,
+      "wallClockMs": 1345,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 1000,
+      "taskSummary": "35 up-to-date",
+      "executedTasks": 0,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 35,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "compile-incremental",
+      "group": "compile",
+      "title": "assemble lại, không đổi source",
+      "mvnAnalogue": "mvn package lần hai, compiler incremental",
+      "tasks": [
+        ":servicetalk-buffer-api:assemble",
+        ":servicetalk-concurrent-api:assemble",
+        ":servicetalk-http-api:assemble"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--no-build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 2,
+      "exitCode": 0,
+      "wallClockMs": 1161,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 1000,
+      "taskSummary": "35 up-to-date",
+      "executedTasks": 0,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 35,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "compile-cache-store",
+      "group": "compile",
+      "title": "clean + assemble, ghi build cache",
+      "mvnAnalogue": "lần đầu chạy với maven-build-cache-extension",
+      "tasks": [
+        ":servicetalk-buffer-api:clean",
+        ":servicetalk-concurrent-api:clean",
+        ":servicetalk-http-api:clean",
+        ":servicetalk-buffer-api:assemble",
+        ":servicetalk-concurrent-api:assemble",
+        ":servicetalk-http-api:assemble"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 1,
+      "exitCode": 0,
+      "wallClockMs": 6707,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 6000,
+      "taskSummary": "18 executed, 20 up-to-date",
+      "executedTasks": 18,
+      "fromCacheTasks": 0,
+      "upToDateTasks": 20,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "compile-cache-hit",
+      "group": "compile",
+      "title": "clean + assemble, đọc build cache",
+      "mvnAnalogue": "clean package khi cache đã có entry",
+      "tasks": [
+        ":servicetalk-buffer-api:clean",
+        ":servicetalk-concurrent-api:clean",
+        ":servicetalk-http-api:clean",
+        ":servicetalk-buffer-api:assemble",
+        ":servicetalk-concurrent-api:assemble",
+        ":servicetalk-http-api:assemble"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 1,
+      "exitCode": 0,
+      "wallClockMs": 1310,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 1000,
+      "taskSummary": "12 executed, 6 from cache, 20 up-to-date",
+      "executedTasks": 12,
+      "fromCacheTasks": 6,
+      "upToDateTasks": 20,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "compile-cache-hit",
+      "group": "compile",
+      "title": "clean + assemble, đọc build cache",
+      "mvnAnalogue": "clean package khi cache đã có entry",
+      "tasks": [
+        ":servicetalk-buffer-api:clean",
+        ":servicetalk-concurrent-api:clean",
+        ":servicetalk-http-api:clean",
+        ":servicetalk-buffer-api:assemble",
+        ":servicetalk-concurrent-api:assemble",
+        ":servicetalk-http-api:assemble"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 2,
+      "exitCode": 0,
+      "wallClockMs": 1217,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 1000,
+      "taskSummary": "12 executed, 6 from cache, 20 up-to-date",
+      "executedTasks": 12,
+      "fromCacheTasks": 6,
+      "upToDateTasks": 20,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    },
+    {
+      "scenarioId": "compile-ci-shape",
+      "group": "compile",
+      "title": "CI ServiceTalk: không daemon, có cache",
+      "mvnAnalogue": "mvn sạch trên runner mới, cache ~/.m2 đã restore",
+      "tasks": [
+        ":servicetalk-buffer-api:clean",
+        ":servicetalk-concurrent-api:clean",
+        ":servicetalk-http-api:clean",
+        ":servicetalk-buffer-api:assemble",
+        ":servicetalk-concurrent-api:assemble",
+        ":servicetalk-http-api:assemble"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--no-daemon",
+        "--parallel",
+        "--build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "role": "measured",
+      "iteration": 1,
+      "exitCode": 0,
+      "wallClockMs": 6128,
+      "outcome": "SUCCESSFUL",
+      "gradleReportedMs": 5000,
+      "taskSummary": "12 executed, 6 from cache, 20 up-to-date",
+      "executedTasks": 12,
+      "fromCacheTasks": 6,
+      "upToDateTasks": 20,
+      "configurationCache": "not-used",
+      "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+      "logExcerpt": ""
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "config-no-daemon",
+      "group": "configuration",
+      "title": "help, JVM mới",
+      "mvnAnalogue": "mvn help, không có mvnd",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--no-daemon",
+        "--no-parallel",
+        "--no-build-cache",
+        "--no-configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "measured": [
+        {
+          "scenarioId": "config-no-daemon",
+          "group": "configuration",
+          "title": "help, JVM mới",
+          "mvnAnalogue": "mvn help, không có mvnd",
+          "tasks": [
+            "help"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--no-daemon",
+            "--no-parallel",
+            "--no-build-cache",
+            "--no-configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 1,
+          "exitCode": 0,
+          "wallClockMs": 8802,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 8000,
+          "taskSummary": "1 executed, 4 up-to-date",
+          "executedTasks": 1,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 4,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        },
+        {
+          "scenarioId": "config-no-daemon",
+          "group": "configuration",
+          "title": "help, JVM mới",
+          "mvnAnalogue": "mvn help, không có mvnd",
+          "tasks": [
+            "help"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--no-daemon",
+            "--no-parallel",
+            "--no-build-cache",
+            "--no-configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 2,
+          "exitCode": 0,
+          "wallClockMs": 8684,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 8000,
+          "taskSummary": "1 executed, 4 up-to-date",
+          "executedTasks": 1,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 4,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        }
+      ],
+      "warmup": [],
+      "medianWallClockMs": 8743,
+      "medianGradleReportedMs": 8000,
+      "failed": false,
+      "configurationCache": "not-used",
+      "fromCacheTasks": 0,
+      "upToDateTasks": 4,
+      "executedTasks": 1,
+      "taskSummary": "1 executed, 4 up-to-date"
+    },
+    {
+      "id": "config-daemon",
+      "group": "configuration",
+      "title": "help, daemon nóng",
+      "mvnAnalogue": "mvnd help, một luồng",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--no-parallel",
+        "--no-build-cache",
+        "--no-configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "measured": [
+        {
+          "scenarioId": "config-daemon",
+          "group": "configuration",
+          "title": "help, daemon nóng",
+          "mvnAnalogue": "mvnd help, một luồng",
+          "tasks": [
+            "help"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--no-parallel",
+            "--no-build-cache",
+            "--no-configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 1,
+          "exitCode": 0,
+          "wallClockMs": 2333,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 2000,
+          "taskSummary": "1 executed, 4 up-to-date",
+          "executedTasks": 1,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 4,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        },
+        {
+          "scenarioId": "config-daemon",
+          "group": "configuration",
+          "title": "help, daemon nóng",
+          "mvnAnalogue": "mvnd help, một luồng",
+          "tasks": [
+            "help"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--no-parallel",
+            "--no-build-cache",
+            "--no-configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 2,
+          "exitCode": 0,
+          "wallClockMs": 2228,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 2000,
+          "taskSummary": "1 executed, 4 up-to-date",
+          "executedTasks": 1,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 4,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        },
+        {
+          "scenarioId": "config-daemon",
+          "group": "configuration",
+          "title": "help, daemon nóng",
+          "mvnAnalogue": "mvnd help, một luồng",
+          "tasks": [
+            "help"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--no-parallel",
+            "--no-build-cache",
+            "--no-configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 3,
+          "exitCode": 0,
+          "wallClockMs": 1724,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 1000,
+          "taskSummary": "1 executed, 4 up-to-date",
+          "executedTasks": 1,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 4,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        }
+      ],
+      "warmup": [
+        {
+          "scenarioId": "config-daemon",
+          "group": "configuration",
+          "title": "help, daemon nóng",
+          "mvnAnalogue": "mvnd help, một luồng",
+          "tasks": [
+            "help"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--no-parallel",
+            "--no-build-cache",
+            "--no-configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "warmup",
+          "iteration": 1,
+          "exitCode": 0,
+          "wallClockMs": 8636,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 8000,
+          "taskSummary": "1 executed, 4 up-to-date",
+          "executedTasks": 1,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 4,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        }
+      ],
+      "medianWallClockMs": 2228,
+      "medianGradleReportedMs": 2000,
+      "failed": false,
+      "configurationCache": "not-used",
+      "fromCacheTasks": 0,
+      "upToDateTasks": 4,
+      "executedTasks": 1,
+      "taskSummary": "1 executed, 4 up-to-date"
+    },
+    {
+      "id": "config-servicetalk-defaults",
+      "group": "configuration",
+      "title": "help, cờ mặc định của ServiceTalk",
+      "mvnAnalogue": "mvnd -T 1C với build cache bật",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "measured": [
+        {
+          "scenarioId": "config-servicetalk-defaults",
+          "group": "configuration",
+          "title": "help, cờ mặc định của ServiceTalk",
+          "mvnAnalogue": "mvnd -T 1C với build cache bật",
+          "tasks": [
+            "help"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--parallel",
+            "--build-cache",
+            "--configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 1,
+          "exitCode": 0,
+          "wallClockMs": 2426,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 2000,
+          "taskSummary": "1 executed, 4 up-to-date",
+          "executedTasks": 1,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 4,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        },
+        {
+          "scenarioId": "config-servicetalk-defaults",
+          "group": "configuration",
+          "title": "help, cờ mặc định của ServiceTalk",
+          "mvnAnalogue": "mvnd -T 1C với build cache bật",
+          "tasks": [
+            "help"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--parallel",
+            "--build-cache",
+            "--configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 2,
+          "exitCode": 0,
+          "wallClockMs": 2043,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 1000,
+          "taskSummary": "1 executed, 4 up-to-date",
+          "executedTasks": 1,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 4,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        },
+        {
+          "scenarioId": "config-servicetalk-defaults",
+          "group": "configuration",
+          "title": "help, cờ mặc định của ServiceTalk",
+          "mvnAnalogue": "mvnd -T 1C với build cache bật",
+          "tasks": [
+            "help"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--parallel",
+            "--build-cache",
+            "--configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 3,
+          "exitCode": 0,
+          "wallClockMs": 1863,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 1000,
+          "taskSummary": "1 executed, 4 up-to-date",
+          "executedTasks": 1,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 4,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        }
+      ],
+      "warmup": [
+        {
+          "scenarioId": "config-servicetalk-defaults",
+          "group": "configuration",
+          "title": "help, cờ mặc định của ServiceTalk",
+          "mvnAnalogue": "mvnd -T 1C với build cache bật",
+          "tasks": [
+            "help"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--parallel",
+            "--build-cache",
+            "--configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "warmup",
+          "iteration": 1,
+          "exitCode": 0,
+          "wallClockMs": 8837,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 8000,
+          "taskSummary": "1 executed, 4 up-to-date",
+          "executedTasks": 1,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 4,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        }
+      ],
+      "medianWallClockMs": 2043,
+      "medianGradleReportedMs": 1000,
+      "failed": false,
+      "configurationCache": "not-used",
+      "fromCacheTasks": 0,
+      "upToDateTasks": 4,
+      "executedTasks": 1,
+      "taskSummary": "1 executed, 4 up-to-date"
+    },
+    {
+      "id": "config-configuration-cache",
+      "group": "configuration",
+      "title": "help, configuration cache",
+      "mvnAnalogue": "không có tương đương ổn định bên Maven",
+      "tasks": [
+        "help"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--build-cache",
+        "--no-configure-on-demand",
+        "--configuration-cache"
+      ],
+      "measured": [
+        {
+          "scenarioId": "config-configuration-cache",
+          "group": "configuration",
+          "title": "help, configuration cache",
+          "mvnAnalogue": "không có tương đương ổn định bên Maven",
+          "tasks": [
+            "help"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--parallel",
+            "--build-cache",
+            "--no-configure-on-demand",
+            "--configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 1,
+          "exitCode": 0,
+          "wallClockMs": 563,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 506,
+          "taskSummary": "1 executed",
+          "executedTasks": 1,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 0,
+          "configurationCache": "reused",
+          "problemExcerpt": "Reusing configuration cache.\nConfiguration cache entry reused.",
+          "logExcerpt": ""
+        },
+        {
+          "scenarioId": "config-configuration-cache",
+          "group": "configuration",
+          "title": "help, configuration cache",
+          "mvnAnalogue": "không có tương đương ổn định bên Maven",
+          "tasks": [
+            "help"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--parallel",
+            "--build-cache",
+            "--no-configure-on-demand",
+            "--configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 2,
+          "exitCode": 0,
+          "wallClockMs": 587,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 527,
+          "taskSummary": "1 executed",
+          "executedTasks": 1,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 0,
+          "configurationCache": "reused",
+          "problemExcerpt": "Reusing configuration cache.\nConfiguration cache entry reused.",
+          "logExcerpt": ""
+        }
+      ],
+      "warmup": [
+        {
+          "scenarioId": "config-configuration-cache",
+          "group": "configuration",
+          "title": "help, configuration cache",
+          "mvnAnalogue": "không có tương đương ổn định bên Maven",
+          "tasks": [
+            "help"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--parallel",
+            "--build-cache",
+            "--no-configure-on-demand",
+            "--configuration-cache"
+          ],
+          "role": "warmup",
+          "iteration": 1,
+          "exitCode": 0,
+          "wallClockMs": 3164,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 2000,
+          "taskSummary": "1 executed",
+          "executedTasks": 1,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 0,
+          "configurationCache": "reused",
+          "problemExcerpt": "Reusing configuration cache.\nConfiguration cache entry reused.",
+          "logExcerpt": ""
+        }
+      ],
+      "medianWallClockMs": 575,
+      "medianGradleReportedMs": 517,
+      "failed": false,
+      "configurationCache": "reused",
+      "fromCacheTasks": 0,
+      "upToDateTasks": 0,
+      "executedTasks": 1,
+      "taskSummary": "1 executed"
+    },
+    {
+      "id": "compile-no-cache",
+      "group": "compile",
+      "title": "clean + assemble, không cache",
+      "mvnAnalogue": "mvn clean package -T 1C, không build cache",
+      "tasks": [
+        ":servicetalk-buffer-api:clean",
+        ":servicetalk-concurrent-api:clean",
+        ":servicetalk-http-api:clean",
+        ":servicetalk-buffer-api:assemble",
+        ":servicetalk-concurrent-api:assemble",
+        ":servicetalk-http-api:assemble"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--no-build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "measured": [
+        {
+          "scenarioId": "compile-no-cache",
+          "group": "compile",
+          "title": "clean + assemble, không cache",
+          "mvnAnalogue": "mvn clean package -T 1C, không build cache",
+          "tasks": [
+            ":servicetalk-buffer-api:clean",
+            ":servicetalk-concurrent-api:clean",
+            ":servicetalk-http-api:clean",
+            ":servicetalk-buffer-api:assemble",
+            ":servicetalk-concurrent-api:assemble",
+            ":servicetalk-http-api:assemble"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--parallel",
+            "--no-build-cache",
+            "--configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 1,
+          "exitCode": 0,
+          "wallClockMs": 15325,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 14000,
+          "taskSummary": "31 executed, 7 up-to-date",
+          "executedTasks": 31,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 7,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        }
+      ],
+      "warmup": [],
+      "medianWallClockMs": 15325,
+      "medianGradleReportedMs": 14000,
+      "failed": false,
+      "configurationCache": "not-used",
+      "fromCacheTasks": 0,
+      "upToDateTasks": 7,
+      "executedTasks": 31,
+      "taskSummary": "31 executed, 7 up-to-date"
+    },
+    {
+      "id": "compile-incremental",
+      "group": "compile",
+      "title": "assemble lại, không đổi source",
+      "mvnAnalogue": "mvn package lần hai, compiler incremental",
+      "tasks": [
+        ":servicetalk-buffer-api:assemble",
+        ":servicetalk-concurrent-api:assemble",
+        ":servicetalk-http-api:assemble"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--no-build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "measured": [
+        {
+          "scenarioId": "compile-incremental",
+          "group": "compile",
+          "title": "assemble lại, không đổi source",
+          "mvnAnalogue": "mvn package lần hai, compiler incremental",
+          "tasks": [
+            ":servicetalk-buffer-api:assemble",
+            ":servicetalk-concurrent-api:assemble",
+            ":servicetalk-http-api:assemble"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--parallel",
+            "--no-build-cache",
+            "--configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 1,
+          "exitCode": 0,
+          "wallClockMs": 1345,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 1000,
+          "taskSummary": "35 up-to-date",
+          "executedTasks": 0,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 35,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        },
+        {
+          "scenarioId": "compile-incremental",
+          "group": "compile",
+          "title": "assemble lại, không đổi source",
+          "mvnAnalogue": "mvn package lần hai, compiler incremental",
+          "tasks": [
+            ":servicetalk-buffer-api:assemble",
+            ":servicetalk-concurrent-api:assemble",
+            ":servicetalk-http-api:assemble"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--parallel",
+            "--no-build-cache",
+            "--configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 2,
+          "exitCode": 0,
+          "wallClockMs": 1161,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 1000,
+          "taskSummary": "35 up-to-date",
+          "executedTasks": 0,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 35,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        }
+      ],
+      "warmup": [],
+      "medianWallClockMs": 1253,
+      "medianGradleReportedMs": 1000,
+      "failed": false,
+      "configurationCache": "not-used",
+      "fromCacheTasks": 0,
+      "upToDateTasks": 35,
+      "executedTasks": 0,
+      "taskSummary": "35 up-to-date"
+    },
+    {
+      "id": "compile-cache-store",
+      "group": "compile",
+      "title": "clean + assemble, ghi build cache",
+      "mvnAnalogue": "lần đầu chạy với maven-build-cache-extension",
+      "tasks": [
+        ":servicetalk-buffer-api:clean",
+        ":servicetalk-concurrent-api:clean",
+        ":servicetalk-http-api:clean",
+        ":servicetalk-buffer-api:assemble",
+        ":servicetalk-concurrent-api:assemble",
+        ":servicetalk-http-api:assemble"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "measured": [
+        {
+          "scenarioId": "compile-cache-store",
+          "group": "compile",
+          "title": "clean + assemble, ghi build cache",
+          "mvnAnalogue": "lần đầu chạy với maven-build-cache-extension",
+          "tasks": [
+            ":servicetalk-buffer-api:clean",
+            ":servicetalk-concurrent-api:clean",
+            ":servicetalk-http-api:clean",
+            ":servicetalk-buffer-api:assemble",
+            ":servicetalk-concurrent-api:assemble",
+            ":servicetalk-http-api:assemble"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--parallel",
+            "--build-cache",
+            "--configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 1,
+          "exitCode": 0,
+          "wallClockMs": 6707,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 6000,
+          "taskSummary": "18 executed, 20 up-to-date",
+          "executedTasks": 18,
+          "fromCacheTasks": 0,
+          "upToDateTasks": 20,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        }
+      ],
+      "warmup": [],
+      "medianWallClockMs": 6707,
+      "medianGradleReportedMs": 6000,
+      "failed": false,
+      "configurationCache": "not-used",
+      "fromCacheTasks": 0,
+      "upToDateTasks": 20,
+      "executedTasks": 18,
+      "taskSummary": "18 executed, 20 up-to-date"
+    },
+    {
+      "id": "compile-cache-hit",
+      "group": "compile",
+      "title": "clean + assemble, đọc build cache",
+      "mvnAnalogue": "clean package khi cache đã có entry",
+      "tasks": [
+        ":servicetalk-buffer-api:clean",
+        ":servicetalk-concurrent-api:clean",
+        ":servicetalk-http-api:clean",
+        ":servicetalk-buffer-api:assemble",
+        ":servicetalk-concurrent-api:assemble",
+        ":servicetalk-http-api:assemble"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--parallel",
+        "--build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "measured": [
+        {
+          "scenarioId": "compile-cache-hit",
+          "group": "compile",
+          "title": "clean + assemble, đọc build cache",
+          "mvnAnalogue": "clean package khi cache đã có entry",
+          "tasks": [
+            ":servicetalk-buffer-api:clean",
+            ":servicetalk-concurrent-api:clean",
+            ":servicetalk-http-api:clean",
+            ":servicetalk-buffer-api:assemble",
+            ":servicetalk-concurrent-api:assemble",
+            ":servicetalk-http-api:assemble"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--parallel",
+            "--build-cache",
+            "--configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 1,
+          "exitCode": 0,
+          "wallClockMs": 1310,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 1000,
+          "taskSummary": "12 executed, 6 from cache, 20 up-to-date",
+          "executedTasks": 12,
+          "fromCacheTasks": 6,
+          "upToDateTasks": 20,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        },
+        {
+          "scenarioId": "compile-cache-hit",
+          "group": "compile",
+          "title": "clean + assemble, đọc build cache",
+          "mvnAnalogue": "clean package khi cache đã có entry",
+          "tasks": [
+            ":servicetalk-buffer-api:clean",
+            ":servicetalk-concurrent-api:clean",
+            ":servicetalk-http-api:clean",
+            ":servicetalk-buffer-api:assemble",
+            ":servicetalk-concurrent-api:assemble",
+            ":servicetalk-http-api:assemble"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--parallel",
+            "--build-cache",
+            "--configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 2,
+          "exitCode": 0,
+          "wallClockMs": 1217,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 1000,
+          "taskSummary": "12 executed, 6 from cache, 20 up-to-date",
+          "executedTasks": 12,
+          "fromCacheTasks": 6,
+          "upToDateTasks": 20,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        }
+      ],
+      "warmup": [],
+      "medianWallClockMs": 1264,
+      "medianGradleReportedMs": 1000,
+      "failed": false,
+      "configurationCache": "not-used",
+      "fromCacheTasks": 6,
+      "upToDateTasks": 20,
+      "executedTasks": 12,
+      "taskSummary": "12 executed, 6 from cache, 20 up-to-date"
+    },
+    {
+      "id": "compile-ci-shape",
+      "group": "compile",
+      "title": "CI ServiceTalk: không daemon, có cache",
+      "mvnAnalogue": "mvn sạch trên runner mới, cache ~/.m2 đã restore",
+      "tasks": [
+        ":servicetalk-buffer-api:clean",
+        ":servicetalk-concurrent-api:clean",
+        ":servicetalk-http-api:clean",
+        ":servicetalk-buffer-api:assemble",
+        ":servicetalk-concurrent-api:assemble",
+        ":servicetalk-http-api:assemble"
+      ],
+      "args": [
+        "--console=plain",
+        "--no-watch-fs",
+        "--no-daemon",
+        "--parallel",
+        "--build-cache",
+        "--configure-on-demand",
+        "--no-configuration-cache"
+      ],
+      "measured": [
+        {
+          "scenarioId": "compile-ci-shape",
+          "group": "compile",
+          "title": "CI ServiceTalk: không daemon, có cache",
+          "mvnAnalogue": "mvn sạch trên runner mới, cache ~/.m2 đã restore",
+          "tasks": [
+            ":servicetalk-buffer-api:clean",
+            ":servicetalk-concurrent-api:clean",
+            ":servicetalk-http-api:clean",
+            ":servicetalk-buffer-api:assemble",
+            ":servicetalk-concurrent-api:assemble",
+            ":servicetalk-http-api:assemble"
+          ],
+          "args": [
+            "--console=plain",
+            "--no-watch-fs",
+            "--no-daemon",
+            "--parallel",
+            "--build-cache",
+            "--configure-on-demand",
+            "--no-configuration-cache"
+          ],
+          "role": "measured",
+          "iteration": 1,
+          "exitCode": 0,
+          "wallClockMs": 6128,
+          "outcome": "SUCCESSFUL",
+          "gradleReportedMs": 5000,
+          "taskSummary": "12 executed, 6 from cache, 20 up-to-date",
+          "executedTasks": 12,
+          "fromCacheTasks": 6,
+          "upToDateTasks": 20,
+          "configurationCache": "not-used",
+          "problemExcerpt": "[Incubating] Problems report is available at: file:///tmp/servicetalk/build/reports/problems/problems-report.html",
+          "logExcerpt": ""
+        }
+      ],
+      "warmup": [],
+      "medianWallClockMs": 6128,
+      "medianGradleReportedMs": 5000,
+      "failed": false,
+      "configurationCache": "not-used",
+      "fromCacheTasks": 6,
+      "upToDateTasks": 20,
+      "executedTasks": 12,
+      "taskSummary": "12 executed, 6 from cache, 20 up-to-date"
+    }
+  ],
+  "insights": [
+    "Daemon nóng chạy help trong 2.2s so với 8.7s khi mỗi lần là một JVM mới (3.9×). Đây là phần mvnd loại bỏ ở Maven.",
+    "Parallel, build cache và configure-on-demand không đổi help: 2.0s so với 2.2s của daemon tuần tự. Các cờ này bắt đầu có ích khi có task compile chạy được song song.",
+    "Cùng một cache hit, kiểu CI (--no-daemon) mất 6.1s còn daemon đang sống mất 1.3s (4.8×). Runner một lần không giữ được daemon sang job sau, nhưng không nên trả giá này hai lần trong cùng một job.",
+    "Assemble đầu mất 15.3s với 31 task executed, gồm daemon vừa khởi động và các project phụ thuộc chưa có output. Assemble lại khi source không đổi mất 1.3s, 35 task up-to-date.",
+    "Sau khi dependency đã được biên dịch, clean ba module rồi assemble ghi cache trong 6.7s (18 executed). Lần clean tiếp theo đọc cache trong 1.3s (5.3×), với 6 task from cache. clean không xóa GRADLE_USER_HOME.",
+    "Configuration cache, với configure-on-demand tắt như kịch bản daemon, tái sử dụng help trong 0.6s so với 2.2s (3.9×)."
+  ]
+}
